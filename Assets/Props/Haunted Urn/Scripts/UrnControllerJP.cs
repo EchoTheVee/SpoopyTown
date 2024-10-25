@@ -10,10 +10,13 @@ public class UrnControllerJP : MonoBehaviour
     public float launchForce;
     public float knockback;
 
+    public AudioClip scream;
+    public AudioSource urnAudio;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        urnAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +38,7 @@ public class UrnControllerJP : MonoBehaviour
             //Launch the player backwards
             collision.gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.back * knockback, ForceMode.Impulse);
 
+            urnAudio.PlayOneShot(scream, 1.0f);
         }
     }
 }
